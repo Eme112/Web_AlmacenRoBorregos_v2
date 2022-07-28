@@ -1,10 +1,3 @@
-/* DUDAS:
-1. ¿Hacer lo mismo para registrar una nueva cuenta?
-2. ¿Responsiva?
-3. Pendiente de integrar correctamente con Mongoose
-4. Cómo cargar imágenes
-*/
-
 ////////////////////////////// DEPENDENCIES //////////////////////////////
 var express = require("express");
 var cors = require("cors");
