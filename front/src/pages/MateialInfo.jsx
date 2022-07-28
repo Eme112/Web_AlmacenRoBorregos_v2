@@ -132,6 +132,14 @@ const MaterialInfo = () => {
     }
   }
 
+  const deleteMaterial = (id) => {
+    axios.post("http://localhost:4000/api/materials/delete", {id: id})
+    .then((res) => {})
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   return (
     <Container>
       <NavBar/>
@@ -154,7 +162,7 @@ const MaterialInfo = () => {
             </AmountContainer>*/}
             <Button>RESERVAR</Button>
             <Button1>DEVOLVER</Button1>
-            {/*<Button2>ELIMINAR</Button2>*/}
+            <Button2 id="delete-btn" onClick={() => deleteMaterial(currMaterial._id)}>ELIMINAR</Button2>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
