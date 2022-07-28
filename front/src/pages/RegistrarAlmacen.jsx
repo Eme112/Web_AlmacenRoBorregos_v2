@@ -92,7 +92,7 @@ function RegistrarAlmacen() {
     const newMaterial = {
       name: name,
       model: model,
-      quantity: quantity,
+      cant: quantity,
       description: description,
       locker: locker,
       available: true,

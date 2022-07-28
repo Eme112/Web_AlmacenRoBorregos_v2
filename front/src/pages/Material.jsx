@@ -84,7 +84,7 @@ const Material = ({item}) => {
             {<Image src={item.image} />}
             <Info>
                 <Icon>
-                    <Link to= "/materialinfo"><QuestionMarkIcon/></Link>
+                    <Link to= {item.routeName}><QuestionMarkIcon/></Link>
                 </Icon>
             </Info>
             <Title> {item.name} </Title>

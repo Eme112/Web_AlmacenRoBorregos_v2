@@ -18,8 +18,8 @@ ReactDOM.render(
       <Route path='/register' element={<Register/>}/>
       <Route path='/reservar' element={<Reservar/>}/>
       <Route path='/materiales' element={<Materiales/>}/>
+      <Route path ='/materiales/:materialId' element={<MaterialInfo/>}/>
       <Route path='/registrarmateriales' element={<RegistrarAlmacen/>}/>
-      <Route path ='/materialinfo' element={<MaterialInfo/>}/>
     </Routes>
   </Router>
   </React.StrictMode>,

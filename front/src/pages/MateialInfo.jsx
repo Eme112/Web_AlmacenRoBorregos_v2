@@ -1,5 +1,8 @@
-import logo from '../components/Integrado.png';
+import React,{useState,useEffect} from 'react';
 import { Add, Remove } from "@mui/icons-material";
+import { useParams } from "react-router-dom"
+import axios from 'axios'
+import logo from '../components/Integrado.png';
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import NavBar from '../components/NavBar'
@@ -17,8 +20,8 @@ const ImgContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 90vh;
-  object-fit: cover;
+  height: 60vh;
+  object-fit: fill;
 `;
 
 const InfoContainer = styled.div`
@@ -30,13 +33,17 @@ const Title = styled.h1`
   font-weight: 200;
 `;
 
+const Subtitle = styled.h1`
+  font-weight: 100;
+`;
+
 const Desc = styled.p`
   margin: 20px 0px;
 `;
 
 const Price = styled.span`
   font-weight: 100;
-  font-size: 40px;
+  font-size: 30px;
 `;
 
 
@@ -94,35 +101,60 @@ const Button2 = styled.button`
       background-color: #f8f4f4;
   }
 `;
-function MaterialInfo() {
+
+const MaterialInfo = () => {
+  const params = useParams()
+  const materialId = params.materialId
+
+  const [materialesLista, setMaterialesLista] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/api/materials")
+    .then(res => setMaterialesLista(res.data))
+    .catch(err => console.log(err));
+  }, [])
+
+  var currMaterial = {
+    routeName: "undefined",
+    name: "undefined",
+    model: "undefined",
+    cant: -1,
+    description: "undefined",
+    locker: -1,
+    available: false,
+    datasheet: "undefined",
+    image: "undefined",
+  }
+
+  for(var i = 0; i < materialesLista.length; i++) {
+    if(materialesLista[i].routeName == materialId) {
+      currMaterial = materialesLista[i]
+    }
+  }
+
   return (
     <Container>
       <NavBar/>
       <Wrapper>
         <ImgContainer>
-          <Image src={logo} />
+          <Image src={currMaterial.image} />
         </ImgContainer>
         <InfoContainer>
-          <Title>TL081</Title>
-          <Desc>
-          The TL08xH (TL081H, TL082H, and TL084H) family of  devices  are  the  next-generation  versions  of  
-          the industry-standard TL08x (TL081, TL082, and TL084) devices.These devices provide outstanding 
-          value for cost-sensitive applications, with features including low offset  (1  mV,  typical), 
-          high  slew  rate  (20  V/μs),  and common-mode input to the positive supply. High ESD (1.5  kV,  HBM), 
-          integrated  EMI  and  RF  filters,  and operation across the full
-           –40°C to 125°C enable the TL08xH devices to be used in the most rugged and demanding applications<br/>
-           <a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/1322235/TI/TL081.html">datasheet</a>
-          </Desc>
-          <Price>STOCK : 20</Price>
+          <Title>{currMaterial.name}</Title>
+          <Subtitle>{currMaterial.model}</Subtitle>
+          <Desc>{currMaterial.description}</Desc>
+          <Desc>Datasheet: {currMaterial.datasheet}</Desc>
+          <Price>LOCKER : {currMaterial.locker}</Price>
+          <Title>Disponible : {(currMaterial.available ? "SI" : "NO")}</Title>
           <AddContainer>
-            <AmountContainer>
+            {/*<AmountContainer>
               <Remove />
               <Amount>1</Amount>
               <Add />
-            </AmountContainer>
+            </AmountContainer>*/}
             <Button>RESERVAR</Button>
             <Button1>DEVOLVER</Button1>
-            <Button2>ELIMINAR</Button2>
+            {/*<Button2>ELIMINAR</Button2>*/}
           </AddContainer>
         </InfoContainer>
       </Wrapper>
