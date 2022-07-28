@@ -80,7 +80,7 @@ const Subtitle= styled.p`
 const Material = ({item}) => {
     return (
         <Container>
-            {/*<Image src={item.img} />*/}
+            {<Image src={item.image} />}
             <Info>
                 <Icon>
                     <QuestionMarkIcon/>
