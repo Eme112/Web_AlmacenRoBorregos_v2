@@ -2,11 +2,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import {logo3} from "../data";
 
 const Container = styled.div`
-    height: 60px;
-    background-color: black;
-
+  height: 60px;
+  background-color: black;
 `
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -51,9 +51,7 @@ const SearchContainer = styled.div`
 const Input = styled.input`
   border: none;
 `;
-const CenterItem = styled.div`
-    cursor: pointer;
-`
+
 const LinkStyle = styled.div`
   a:link { text-decoration: none; color: white; margin-right: 60px;}
   a:visited { text-decoration: none; color: white; margin-right: 60px;}
@@ -61,16 +59,27 @@ const LinkStyle = styled.div`
   a:active { text-decoration: none; color: white; margin-right: 60px;}
   display: flex;
   flex-direction: row;
-  justify-contente: space-evenly;
+  justify-content: space-evenly;
+`
+const Image = styled.img`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 15%;
+  width: 15%;
+  object-fit: scale-down;
+  margin-right: 20px;
 `
 
-
-function NavBar() {
-  return (
+const NavBar = ({item}) => {  return (
     <div>  
         <Container>
             <Wrapper>
                 <Left>
+                    {logo3.map((item) => (
+                    <Image src={item.img} /> 
+                    ))} 
                     <HomePage>
                       <Link to='/'> <b>HOME</b></Link>
                     </HomePage>

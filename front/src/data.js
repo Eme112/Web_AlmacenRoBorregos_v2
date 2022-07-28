@@ -1,5 +1,3 @@
-import axios from 'axios'
-import React,{useState,useEffect} from 'react';
 import logo from './components/Integrado.png';
 import logo2 from './components/roborregos.png';
 import Arduino from './components/Arduino.png';
@@ -10,7 +8,7 @@ import Not from './components/Not.png';
 import Transistor from './components/Transistor.png';
 import Diode from './components/Diode.png';
 import Resistor from './components/Resistor.png';
-
+import logoWhite from './components/roborregos_logo_white.png'
 
 /*(export const materialesLista = axios.get("http://localhost:4000/api/materials")
 .then(res => {
@@ -36,5 +34,12 @@ export const sliderItems = [
     desc: "Estamos recibiendo solicitudes",
     bg: "5e388d",
     butt: "CONTACTAR"
+  },
+]
+
+export const logo3 =[
+  {
+    id:1,
+    img: logoWhite,
   },
 ]
