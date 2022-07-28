@@ -47,6 +47,17 @@ app.get("/api/materials/:material", async function(req, res) {
     }    
 });
 
+// Delete a single material, or returns false
+app.post("/api/materials/delete", async function(req, res) {
+    let deleteId = req.body.id
+    try {
+        await Material.findByIdAndDelete(deleteId)
+        res.json(`Material with id: ${deleteId} deleted correctly`)
+    } catch {
+        return res.send(`Material with id: ${deleteId} was not found`)
+    }
+});
+
 // Add material - takes in JSON input
 app.post("/api/materials", async function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
@@ -64,6 +75,21 @@ app.post("/api/materials", async function(req, res) {
 
     res.json(addedMaterial);
 });
+
+// Update material - takes in JSON input
+/*app.post("/api/materials/update", async function(req, res) {
+    try {
+        const id = req.params.id;
+        const updates = req.body;
+
+        const result = await Material.findByIdAndUpdate(id, updates);
+
+        res.send(result);
+    } catch (error) {
+        console.log(error);
+    }
+
+});*/
   
 ////////////////////////////// START SERVER //////////////////////////////
 app.listen(PORT, function() {
