@@ -55,7 +55,7 @@ app.post("/api/materials", async function(req, res) {
 
     // Using a RegEx Pattern to remove spaces from newCharacter
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    addedMaterial.routeName = addedMaterial.name.replace(/\s+/g, "").toLowerCase();
+    addedMaterial.routeName = addedMaterial.name.replace(/\s+/g, "").toLowerCase() + "-" + addedMaterial.model.replace(/\s+/g, "").toLowerCase();
 
     const mat = new Material(addedMaterial);
     await mat.save().catch(err => console.log(err));

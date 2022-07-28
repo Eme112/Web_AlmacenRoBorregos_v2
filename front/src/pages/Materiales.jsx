@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import styled from "styled-components";
-import {materialesLista} from "../data";
+//import {materialesLista} from "../data";
+import axios from 'axios'
 import Material from "./Material";
 
 const Container = styled.div`
@@ -13,6 +14,15 @@ const Container = styled.div`
 `;
 
 function Materiales() {
+
+  const [materialesLista, setMaterialesLista] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/api/materials")
+    .then(res => setMaterialesLista(res.data))
+    .catch(err => console.log(err));
+  }, [])
+
   return (
     <div>
         <NavBar/>
@@ -21,7 +31,6 @@ function Materiales() {
                 <Material item={item} key={item.id}/>
             ))}
         </Container>
-
         <Footer/>
     </div>
   )

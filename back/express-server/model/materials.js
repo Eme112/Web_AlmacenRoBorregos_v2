@@ -11,7 +11,8 @@ const materialSchema = new Schema({
     description: String,
     locker: Number,
     available: Boolean,
-    datasheet: String
+    datasheet: String,
+    image: String,
 });
 
 module.exports = mongoose.model('materials', materialSchema);
