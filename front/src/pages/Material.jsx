@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import { Link } from "react-router-dom";
 
 const Info= styled.div`
     opacity: 0;
@@ -83,7 +84,7 @@ const Material = ({item}) => {
             {<Image src={item.image} />}
             <Info>
                 <Icon>
-                    <QuestionMarkIcon/>
+                    <Link to= "/materialinfo"><QuestionMarkIcon/></Link>
                 </Icon>
             </Info>
             <Title> {item.name} </Title>
