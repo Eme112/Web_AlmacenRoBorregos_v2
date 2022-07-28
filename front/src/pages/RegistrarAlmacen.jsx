@@ -83,14 +83,15 @@ function RegistrarAlmacen() {
     setDatasheet(e.target.value)
   }
 
-  const addMaterial = () => {
+  const addMaterial = (e) => {
+    e.preventDefault()
     const newMaterial = {
       name: name,
       model: model,
       quantity: quantity,
       description: description,
       locker: locker,
-      available: available,
+      available: true,
       datasheet: datasheet
     }
 
