@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const Container = styled.div`
     height: 60px;
     background-color: black;
+
 `
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -19,10 +20,10 @@ const Left = styled.div`
   align-items: center;
 `;
 const Center = styled.div`
-  flex: 1;
+  flex: 2;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 const Right = styled.div`
   flex: 1;
@@ -32,9 +33,12 @@ const Right = styled.div`
 `;
 
 const HomePage = styled.span`
-    font-size: 20px;
-    cursor: pointer;
-    color: white;
+  font-size: 20px;
+  cursor: pointer;
+  a:link { text-decoration: none; color: white; font-weight: bold;}
+  a:visited { text-decoration: none; color: white; font-weight: bold;}
+  a:hover { text-decoration: none; color: white; font-weight: bold;}
+  a:active { text-decoration: none; color: white; font-weight: bold;}
 `
 const SearchContainer = styled.div`
   border: 0.5px solid black;
@@ -49,8 +53,18 @@ const Input = styled.input`
 `;
 const CenterItem = styled.div`
     cursor: pointer;
-    color: white;
 `
+const LinkStyle = styled.div`
+  a:link { text-decoration: none; color: white; margin-right: 60px;}
+  a:visited { text-decoration: none; color: white; margin-right: 60px;}
+  a:hover { text-decoration: none; color: white; margin-right: 60px;}
+  a:active { text-decoration: none; color: white; margin-right: 60px;}
+  display: flex;
+  flex-direction: row;
+  justify-contente: space-evenly;
+`
+
+
 function NavBar() {
   return (
     <div>  
@@ -58,13 +72,16 @@ function NavBar() {
             <Wrapper>
                 <Left>
                     <HomePage>
-                       <Link to='/' color='white'> <b>HOME</b></Link>
+                      <Link to='/'> <b>HOME</b></Link>
                     </HomePage>
                 </Left>
                 <Center>
-                    <CenterItem><Link to='/login' color='white'>INICIAR SESION</Link></CenterItem>
-                    <CenterItem><Link to='/register' color='white'>REGISTRARSE</Link></CenterItem>
-                    <CenterItem><Link to='/materiales' color='white'>MATERIALES</Link></CenterItem>
+                    <LinkStyle>
+                      <Link to='/login'>INICIAR SESION</Link>
+                      <Link to='/register'>REGISTRARSE</Link>
+                      <Link to='/materiales'>MATERIALES</Link>
+                      <Link to='/registrarmateriales'>INVENTARIO</Link>
+                    </LinkStyle>
                 </Center>
                 <Right>
                     <SearchContainer>

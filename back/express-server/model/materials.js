@@ -6,7 +6,9 @@ const Schema = mongoose.Schema;
 const materialSchema = new Schema({
     routeName: String,
     name: String,
+    model: String,
     cant: Number,
+    description: String,
     locker: Number,
     available: Boolean,
     datasheet: String

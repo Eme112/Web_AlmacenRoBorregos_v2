@@ -37,8 +37,6 @@ const Input = styled.input`
   padding: 10px;
 `;
 
-
-
 const Button = styled.button`
   width: 40%;
   border: none;
@@ -51,22 +49,22 @@ const Button = styled.button`
 function RegistrarAlmacen() {
   return (
     <div>
-
       <NavBar/>
       <Container>
-      <Wrapper>
-        <Title>REGISTRAR MATERIALES</Title>
-        <Form>
-                <Input placeholder="name" />
-                <Input placeholder="modelo" />
-                <Input placeholder="cantidad" />
-                <Input placeholder="descripcion" />
-                <Input placeholder="datasheet" />
-                <Button>REGISTRAR MATERIAL</Button>
-              </Form>
-            </Wrapper>
-          </Container>
-        <Footer/> 
+        <Wrapper>
+          <Title>REGISTRAR MATERIALES</Title>
+          <Form>
+            <Input placeholder="nombre" />
+            <Input placeholder="modelo" />
+            <Input placeholder="cantidad" />
+            <Input placeholder="descripcion" />
+            <Input placeholder="Locker" />
+            <Input placeholder="datasheet" />
+            <Button>REGISTRAR MATERIAL</Button>
+          </Form>
+        </Wrapper>
+      </Container>
+      <Footer/> 
     </div>
   )
 }
