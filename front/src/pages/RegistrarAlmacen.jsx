@@ -54,6 +54,7 @@ function RegistrarAlmacen() {
   const [locker,setLocker] = useState('')
   const [available,setAvailable] = useState('')
   const [datasheet,setDatasheet] = useState('')
+  const [image,setImage] = useState('')
 
   const nameChangeHandler = (e) => {
     setName(e.target.value)
@@ -83,8 +84,11 @@ function RegistrarAlmacen() {
     setDatasheet(e.target.value)
   }
 
+  const imageChangeHandler = (e) => {
+    setImage(e.target.value)
+  }
+
   const addMaterial = (e) => {
-    e.preventDefault()
     const newMaterial = {
       name: name,
       model: model,
@@ -92,7 +96,8 @@ function RegistrarAlmacen() {
       description: description,
       locker: locker,
       available: true,
-      datasheet: datasheet
+      datasheet: datasheet,
+      image: image
     }
 
     axios.post('http://localhost:4000/api/materials', newMaterial)
@@ -110,12 +115,13 @@ function RegistrarAlmacen() {
         <Wrapper>
           <Title>REGISTRAR MATERIALES</Title>
           <Form>
-            <Input placeholder="nombre" id="name" value={name} onChange={nameChangeHandler}/>
-            <Input placeholder="modelo" id="model" value={model} onChange={modelChangeHandler}/>
-            <Input placeholder="cantidad" id="quantity" value={quantity} onChange={quantityChangeHandler}/>
-            <Input placeholder="descripcion" id="description" value={description} onChange={descriptionChangeHandler}/>
-            <Input placeholder="Locker" id="locker" value={locker} onChange={lockerChangeHandler}/>
-            <Input placeholder="datasheet" id="datasheet" value={datasheet} onChange={datasheetChangeHandler}/>
+            <Input class="in" placeholder="nombre" id="name" value={name} onChange={nameChangeHandler}/>
+            <Input class="in" placeholder="modelo" id="model" value={model} onChange={modelChangeHandler}/>
+            <Input class="in" placeholder="cantidad" id="quantity" value={quantity} onChange={quantityChangeHandler}/>
+            <Input class="in" placeholder="descripcion" id="description" value={description} onChange={descriptionChangeHandler}/>
+            <Input class="in" placeholder="Locker" id="locker" value={locker} onChange={lockerChangeHandler}/>
+            <Input class="in" placeholder="datasheet" id="datasheet" value={datasheet} onChange={datasheetChangeHandler}/>
+            <Input class="in" placeholder="liga a imagen" id="image" value={image} onChange={imageChangeHandler}/>
             <Button id="add-btn" onClick={addMaterial}>REGISTRAR MATERIAL</Button>
           </Form>
         </Wrapper>

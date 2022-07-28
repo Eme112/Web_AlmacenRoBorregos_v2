@@ -1,17 +1,16 @@
-
+import axios from 'axios'
 import logo from './components/Integrado.png';
 import logo2 from './components/roborregos.png';
-import Arduino from './components/Arduino.png';
+/*import Arduino from './components/Arduino.png';
 import Rasp from './components/Rasp.png';
 import And from './components/And.png';
 import Or from './components/Or.png';
 import Not from './components/Not.png';
 import Transistor from './components/Transistor.png';
 import Diode from './components/Diode.png';
-import Resistor from './components/Resistor.png';
+import Resistor from './components/Resistor.png';*/
 
-
-
+/*
 export const materialesLista = [
     {
       id:1,
@@ -62,6 +61,17 @@ export const materialesLista = [
       subtitle: "",
     },
   ]
+*/
+
+export const materialesLista = axios.get("http://localhost:4000/api/materials")
+.then(res => {
+  console.log(res.data)
+})
+.catch(err => {
+  console.log(err)
+})
+
+console.log(materialesLista)
 
 export const sliderItems = [
   {
